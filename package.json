@@ -7,7 +7,7 @@
     "dev": "node server.mjs",
     "start": "node server.mjs",
     "build": "node build.mjs",
-    "check": "node --check public/app.js && node --check public/shared.js && node --check public/lip-gallery.js && node --check build.mjs && node --check server.mjs"
+    "check": "node --check public/app.js && node --check public/shared.js && node --check build.mjs && node --check server.mjs"
   },
   "engines": {
     "node": ">=20"

@@ -39,25 +39,16 @@ Evidencia enlazada en la web:
 
 Antes de activar servicios reales: confirmar configuración de Nordlys y aplicadores, datos de contacto, horarios, credenciales y textos legales definitivos. La descripción del máster AMIR se resume desde LinkedIn; no se añade una universidad expedidora no confirmada.
 
-## Fotografía oficial de Nordlys (27/10/2026)
+## Fotografía oficial de Nordlys
 
-`public/images/candela-nordlys.webp` es la fotografía de producto publicada por Candela en https://candelamedical.com/products/nordlys/ (no Nordlys Mini). Se conserva sin alteraciones, con crédito visible y enlace al fabricante; no representa una fotografía del equipo instalado en la clínica.
+`public/images/candela-nordlys-completa.jpg`: fotografía estática del equipo completo sobre fondo blanco, sin recortar, con crédito y enlace a Candela. No representa una fotografía del equipo instalado en la clínica.
 
-Archivo de origen: https://webappsmarketing.blob.core.windows.net/webapp/media/uploads/system-nordlys-ipl-laser-nd-yag-rosacea-redness-facial-veins_G5r8njG.webp
-
-La fotografía visible se sustituye por `public/images/candela-nordlys-completa.jpg`: equipo completo sobre fondo blanco, sin recortar y sin modificar su aspecto. Original PNG de Candela: https://marketing.syneron-candela.com/rs/620-HCU-218/images/NA-EB-2019-04-08-Natl-Rosacea-Month-Nordlys.png. Fuente: https://marketing.candelamedical.com/APAC-2020-Rosacea-awareness.html. Se convierte a JPEG para reducir el peso.
-
-La sección Nordlys dispone de carrusel manual accesible (flechas, puntos y teclado) con tres fotografías oficiales de ejemplo. El equipo se muestra completo en mayor tamaño y en un marco más ajustado. Las escenas de tratamiento no representan a la doctora ni a pacientes de la clínica.
-
-Fotos de tratamientos, publicadas en la ficha oficial https://candelamedical.com/products/nordlys/:
-- Facial: https://webappsmarketing.blob.core.windows.net/webapp/media/uploads/nordlys-what-is-nordlys-800x500.jpg.webp
-- Escote: https://webappsmarketing.blob.core.windows.net/webapp/media/uploads/nordlys-swt-ipl-treatment-2_klhx3CR.webp
-
-El carrusel cambia automáticamente cada 4 segundos con fundido de 850 ms. Se pausa al salir de pantalla, ocultar la pestaña, situar el ratón encima, enfocar un control o iniciar un gesto. Conserva flechas, puntos y teclado; añade pausa/reanudación y deslizamiento horizontal táctil (también arrastre con ratón), sin interferir con el scroll vertical. Con movimiento reducido se desactivan autoplay y fundido. Los cambios automáticos no se anuncian continuamente a lectores de pantalla.
+Fuente: https://marketing.candelamedical.com/APAC-2020-Rosacea-awareness.html
+Original: https://marketing.syneron-candela.com/rs/620-HCU-218/images/NA-EB-2019-04-08-Natl-Rosacea-Month-Nordlys.png
 
 ## Guía de tratamientos y redes
 
-`/tratamientos.html`: información sobre armonización facial, ácido hialurónico, labios, pómulos, mentón, arrugas de expresión e IPL Nordlys. La portada conserva un resumen con enlaces. Los enlaces de consulta llevan a las formas de solicitar cita por teléfono o en recepción. Se diferencia volumen (rellenos) y actividad muscular (toxina botulínica); no se prometen resultados, tiempos o disponibilidad de módulos no confirmados.
+`/tratamientos.html`: información sobre armonización facial, ácido hialurónico, labios, pómulos, mentón, arrugas de expresión e IPL Nordlys. La portada conserva un resumen con enlaces. El enfoque para labios tiene una sección destacada en portada y una explicación en la guía: naturalidad, armonía, preferencias personales y valoración médica previa. Los enlaces de navegación llevan a la información de cada sección; las novedades de apertura se consultan en Instagram. Se diferencia volumen (rellenos) y actividad muscular (toxina botulínica); no se prometen resultados, tiempos o disponibilidad de módulos no confirmados.
 
 Redes facilitadas por el cliente: LinkedIn indicado e Instagram https://www.instagram.com/dra.lauravinas/. Accesibles desde los pies de página y desde el perfil.
 
@@ -73,15 +64,7 @@ Información editorial para pacientes: la responsable médica debe validar produ
 
 ## Imágenes de la guía
 
-Tres ilustraciones originales en SVG señalan labios, pómulos y mentón (esquemas orientativos, sin representar resultados). Se conservan como recursos editables y coherentes con los dorados y cremas del diseño.
-
-Se añaden dos fotografías públicas del Instagram indicado por el cliente, descargadas y reproducidas sin alteraciones de contenido ni nuevos rótulos sobre la fotografía. Cada una tiene un enlace a la publicación de origen:
-- `instagram-labios-enero-7.jpg`: https://www.instagram.com/dra.lauravinas/p/DTNhJbdFxU8/
-- `instagram-labios-enero-6.jpg`: https://www.instagram.com/dra.lauravinas/p/DTLIcmVlycz/
-
-El acceso público permitió ver las imágenes y sus fechas, pero Instagram exige iniciar sesión para leer los detalles de las publicaciones. Por eso se describen como ejemplos de la zona de labios y no se atribuyen producto, dosis, técnica, evolución ni secuencia clínica no verificados. Las otras fotografías visibles no se usan para pómulos o mentón al no poder confirmar ese contexto.
-
-Los dos ejemplos de labios se muestran ahora en un carrusel manual y automático (4 segundos, fundido de 850 ms). Mantiene cada enlace original tanto en la foto como en el pie, con fecha actualizada al cambiar. Se eliminó el rótulo «Publicación de la doctora». Incluye pausa, puntos, flechas, teclado y deslizamiento horizontal; no abre Instagram al terminar un gesto. Se suspende fuera de pantalla, con foco/ratón, al ocultar la pestaña o con movimiento reducido. `lip-gallery.js` se carga desde `shared.js` y se activa únicamente cuando existe esta galería.
+Tres ilustraciones originales en SVG señalan labios, pómulos y mentón. Son esquemas orientativos, sin representar resultados. La web no muestra fotografías reales de tratamientos, comparativas ni escenas de aplicación. Conserva el retrato profesional de la doctora y la fotografía del equipo Nordlys. No utiliza carruseles.
 
 ## Publicación en GitHub Pages
 
@@ -97,4 +80,12 @@ BASE_PATH=/dra-laura-vinas npm run build
 
 Sitio: https://jvrdgz.github.io/dra-laura-vinas/
 
-La publicación no incluye agenda ni formularios: citas por teléfono o presencialmente; WhatsApp solo para confirmaciones.
+La publicación no incluye agenda ni formularios. El teléfono figura como «Próximamente», sin número ni enlace de llamada. Las citas futuras se solicitarán por teléfono o presencialmente; WhatsApp solo para confirmaciones.
+
+## Próxima apertura (30/10/2026)
+
+Aviso breve «Próximamente» con enlace a Instagram @dra.lauravinas para las novedades de apertura e inauguración. Sin fechas, explicación de obras, programa de inauguración ni reservas. Teléfono «Próximamente», sin número ni enlace de llamada. Los anclajes contacto e inauguracion llevan al mismo aviso. Las citas futuras seguirán siendo por teléfono o presencialmente; WhatsApp solo para confirmaciones.
+
+## Imágenes de tratamientos retiradas (30/10/2026)
+
+Se eliminan de la web y de public/ las dos fotos de labios de Instagram y las escenas de aplicación de Nordlys. También se retiran ambos carruseles, su código, controles y enlaces al apartado de ejemplos. Se mantienen las ilustraciones anatómicas, el retrato profesional y la fotografía estática del equipo Nordlys. Los archivos retirados se conservan fuera de la carpeta publicada en el área de trabajo local.

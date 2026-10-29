@@ -1,4 +1,3 @@
-import './lip-gallery.js';
 const $ = (selector) => document.querySelector(selector);
 const menu = $('.menu-toggle');
 menu.addEventListener('click', () => {
