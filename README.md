@@ -11,10 +11,10 @@ Node.js 20 o superior. Ejecutar `npm run dev` y abrir http://localhost:4173.
 
 ## Páginas
 
-- `/`: portada, Candela Nordlys SWT IPL, ubicación con Google Maps, agenda y formulario visuales.
+- `/`: portada, Candela Nordlys SWT IPL, ubicación con Google Maps y formas de solicitar cita.
 - `/doctora.html`: formación y trayectoria según el perfil de LinkedIn facilitado por el cliente, consultado el 25/10/2026.
 
-Agenda ficticia de doce meses en horario Europe/Madrid. Sin reservas reales, envíos ni almacenamiento de datos. El formulario valida los campos y permite probar la selección de día y hora.
+Las citas se solicitan únicamente por teléfono o presencialmente. WhatsApp se utiliza solo para confirmar citas. La web no incluye calendario, formulario, reservas online ni almacenamiento de datos.
 
 ## Arte y fuentes
 
@@ -57,7 +57,7 @@ El carrusel cambia automáticamente cada 4 segundos con fundido de 850 ms. Se pa
 
 ## Guía de tratamientos y redes
 
-`/tratamientos.html`: información sobre armonización facial, ácido hialurónico, labios, pómulos, mentón, arrugas de expresión e IPL Nordlys. La portada conserva un resumen con enlaces. Las consultas por zona llevan al formulario de demostración con el interés seleccionado. Se diferencia volumen (rellenos) y actividad muscular (toxina botulínica); no se prometen resultados, tiempos o disponibilidad de módulos no confirmados.
+`/tratamientos.html`: información sobre armonización facial, ácido hialurónico, labios, pómulos, mentón, arrugas de expresión e IPL Nordlys. La portada conserva un resumen con enlaces. Los enlaces de consulta llevan a las formas de solicitar cita por teléfono o en recepción. Se diferencia volumen (rellenos) y actividad muscular (toxina botulínica); no se prometen resultados, tiempos o disponibilidad de módulos no confirmados.
 
 Redes facilitadas por el cliente: LinkedIn indicado e Instagram https://www.instagram.com/dra.lauravinas/. Accesibles desde los pies de página y desde el perfil.
 
@@ -97,4 +97,4 @@ BASE_PATH=/dra-laura-vinas npm run build
 
 Sitio: https://jvrdgz.github.io/dra-laura-vinas/
 
-La publicación mantiene la agenda y los formularios como demostración, sin reservas ni envíos reales.
+La publicación no incluye agenda ni formularios: citas por teléfono o presencialmente; WhatsApp solo para confirmaciones.

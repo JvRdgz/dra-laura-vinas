@@ -1,8 +1,5 @@
 const $ = (selector) => document.querySelector(selector);
 document.querySelectorAll('a[href="#evidencia"]').forEach(link => link.addEventListener('click', () => { $('#evidencia').open = true; }));
-document.querySelectorAll('a[href="#contacto"]').forEach(link => link.addEventListener('click', () => {
-  if (link.textContent.includes('Nordlys')) $('select[name="interest"]').value = 'IPL · Candela Nordlys';
-}));
 const menu = $('.menu-toggle');
 menu.addEventListener('click', () => {
   const open = menu.getAttribute('aria-expanded') !== 'true';
@@ -19,98 +16,6 @@ document.querySelectorAll('nav a').forEach(link => link.addEventListener('click'
 document.addEventListener('keydown', event => { if (event.key === 'Escape') closeMenu(); });
 document.addEventListener('click', event => { if (!event.target.closest('.header')) closeMenu(); });
 
-// Calendar availability is deliberately fictitious and never creates a booking.
-const madridDate = new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Madrid', year: 'numeric', month: '2-digit', day: '2-digit' }).formatToParts(new Date());
-const part = type => Number(madridDate.find(item => item.type === type).value);
-const today = new Date(part('year'), part('month') - 1, part('day'));
-const firstMonth = new Date(today.getFullYear(), today.getMonth(), 1);
-let viewMonth = new Date(firstMonth);
-let selectedDate = new Date(today);
-let selectedTime = '';
-const longDate = new Intl.DateTimeFormat('es-ES', { weekday: 'long', day: 'numeric', month: 'long' });
-const fullDate = new Intl.DateTimeFormat('es-ES', { day: 'numeric', month: 'long', year: 'numeric' });
-const monthFormat = new Intl.DateTimeFormat('es-ES', { month: 'long', year: 'numeric' });
-const sameDay = (a, b) => a.toDateString() === b.toDateString();
-const available = date => date >= today && date.getDay() !== 0 && date.getDay() !== 6 && date.getDate() % 9 !== 0;
-while (!available(selectedDate)) selectedDate.setDate(selectedDate.getDate() + 1);
-viewMonth = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), 1);
-const timesFor = date => date.getDate() % 2 === 0 ? ['09:30', '10:30', '12:00', '16:00', '17:30', '18:00'] : ['10:00', '11:30', '13:00', '16:30', '17:00', '18:30'];
-
-function renderCalendar() {
-  $('#month-label').textContent = monthFormat.format(viewMonth);
-  $('#prev-month').disabled = viewMonth <= firstMonth;
-  const lastMonth = new Date(firstMonth.getFullYear(), firstMonth.getMonth() + 11, 1);
-  $('#next-month').disabled = viewMonth >= lastMonth;
-  const calendar = $('#calendar');
-  calendar.replaceChildren();
-  const offset = (viewMonth.getDay() + 6) % 7;
-  const count = new Date(viewMonth.getFullYear(), viewMonth.getMonth() + 1, 0).getDate();
-  for (let i = 0; i < offset; i++) { const blank = document.createElement('span'); blank.setAttribute('aria-hidden', 'true'); calendar.append(blank); }
-  for (let day = 1; day <= count; day++) {
-    const date = new Date(viewMonth.getFullYear(), viewMonth.getMonth(), day);
-    const button = document.createElement('button');
-    button.type = 'button';
-    button.textContent = day;
-    button.className = 'day' + (available(date) ? ' available' : '') + (sameDay(date, selectedDate) ? ' selected' : '') + (sameDay(date, today) ? ' today' : '');
-    button.disabled = !available(date);
-    button.setAttribute('aria-label', `${fullDate.format(date)}${available(date) ? ', disponibilidad de ejemplo' : ', sin disponibilidad'}`);
-    button.setAttribute('aria-pressed', String(sameDay(date, selectedDate)));
-    if (sameDay(date, today)) button.setAttribute('aria-current', 'date');
-    button.addEventListener('click', () => {
-      selectedDate = date;
-      selectedTime = '';
-      renderCalendar();
-      renderSlots();
-      [...calendar.querySelectorAll('button')].find(el => Number(el.textContent) === day)?.focus({ preventScroll: true });
-    });
-    calendar.append(button);
-  }
-}
-function updatePreference() {
-  const preference = selectedTime ? `${fullDate.format(selectedDate)} · ${selectedTime} h` : '';
-  $('#appointment-preference').value = preference;
-  $('#appointment-summary').textContent = preference ? `${preference} · Selección de ejemplo` : 'Selecciona un horario para continuar.';
-  $('#form-result').textContent = '';
-}
-function renderSlots() {
-  $('#selected-date').textContent = longDate.format(selectedDate);
-  const slots = $('#slots'); slots.replaceChildren();
-  timesFor(selectedDate).forEach(time => {
-    const button = document.createElement('button');
-    button.type = 'button'; button.className = 'slot'; button.textContent = time;
-    button.setAttribute('aria-pressed', String(time === selectedTime));
-    button.setAttribute('aria-label', `${time}, horario de ejemplo`);
-    button.addEventListener('click', () => {
-      selectedTime = time;
-      slots.querySelectorAll('button').forEach(el => { const active = el === button; el.classList.toggle('selected', active); el.setAttribute('aria-pressed', String(active)); });
-      updatePreference();
-    });
-    slots.append(button);
-  });
-  updatePreference();
-}
-function moveMonth(amount) {
-  viewMonth = new Date(viewMonth.getFullYear(), viewMonth.getMonth() + amount, 1);
-  selectedDate = new Date(viewMonth);
-  while (!available(selectedDate)) selectedDate.setDate(selectedDate.getDate() + 1);
-  selectedTime = '';
-  renderCalendar(); renderSlots();
-}
-$('#prev-month').addEventListener('click', () => moveMonth(-1));
-$('#next-month').addEventListener('click', () => moveMonth(1));
-$('#booking-continue').addEventListener('click', event => {
-  if (!selectedTime) {
-    event.preventDefault();
-    $('#appointment-summary').textContent = 'Elige uno de los horarios de ejemplo para continuar.';
-    $('#slots button').focus({ preventScroll: true });
-  }
-});
-$('#contact-form').addEventListener('submit', event => {
-  event.preventDefault();
-  $('#form-result').textContent = 'Prueba completada. No se ha enviado ningún dato ni se ha reservado ninguna cita.';
-});
-
-renderCalendar(); renderSlots();
 if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
   const observer = new IntersectionObserver(entries => entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } }), { threshold: .08 });
   document.querySelectorAll('.reveal').forEach(element => observer.observe(element));
@@ -246,14 +151,3 @@ if (nordlysGallery) {
   window.addEventListener('pageshow', syncPlayback);
   syncPlayback();
 }
-
-// Links from the guide can preselect an area without storing personal data.
-const treatmentInterests = {
-  armonizacion: 'Armonización facial',
-  labios: 'Labios · Ácido hialurónico',
-  pomulos: 'Pómulos · Ácido hialurónico',
-  menton: 'Mentón · Ácido hialurónico',
-  expresion: 'Arrugas de expresión'
-};
-const treatmentInterest = treatmentInterests[new URLSearchParams(location.search).get('tratamiento')];
-if (treatmentInterest) document.querySelector('select[name="interest"]').value = treatmentInterest;
